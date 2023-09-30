@@ -1,11 +1,36 @@
 <script lang="ts">
 	import { IconPlus } from '@tabler/icons-svelte';
+	export let data;
+	let { supabase, session } = data;
+
+	$: ({ supabase, session } = data);
+	console.log(data);
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="relative">
 		<div class="img-bg absolute -inset-10" />
-		<button type="button" class="btn-icon variant-soft-tertiary"><IconPlus stroke={3} /></button>
+		<button
+			on:click={() => {
+				supabase.auth.signOut();
+			}}
+			type="button"
+			class="btn-icon variant-soft-tertiary"><IconPlus stroke={3} /></button
+		>
+		<button
+			on:click={() => {
+				supabase.auth.signOut();
+			}}
+			type="button"
+			class="btn variant-soft-tertiary">Sign Out</button
+		>
+	</div>
+	<div>
+		{#if data.session}
+			you are signed in
+		{:else}
+			you are not signed in
+		{/if}
 	</div>
 </div>
 
