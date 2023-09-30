@@ -1,37 +1,33 @@
 <script lang="ts">
 	import { IconPlus } from '@tabler/icons-svelte';
 	export let data;
-	let { supabase, session } = data;
 
+	let { supabase, session } = data;
 	$: ({ supabase, session } = data);
-	console.log(data);
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="relative">
-		<div class="img-bg absolute -inset-10" />
-		<button
-			on:click={() => {
-				supabase.auth.signOut();
-			}}
-			type="button"
-			class="btn-icon variant-soft-tertiary"><IconPlus stroke={3} /></button
-		>
-		<button
-			on:click={() => {
-				supabase.auth.signOut();
-			}}
-			type="button"
-			class="btn variant-soft-tertiary">Sign Out</button
-		>
-	</div>
-	<div>
-		{#if data.session}
-			you are signed in
-		{:else}
-			you are not signed in
-		{/if}
-	</div>
+	{#if session}
+		<div class="relative">
+			<div class="img-bg absolute -inset-10" />
+			<button
+				on:click={() => {
+					supabase.auth.signOut();
+				}}
+				type="button"
+				class="btn-icon variant-filled-primary"><IconPlus stroke={3} /></button
+			>
+		</div>
+	{:else}
+		<div class="relative flex flex-col items-center justify-center">
+			<div class="img-bg absolute -inset-10" />
+			<h1 class="text-4xl sm:text-5xl md:text-5xl font-bold text-center">Welcome to Simplify!</h1>
+			<div class="flex felx-row space-x-4 mt-8">
+				<a href={'/signup'} class="btn variant-filled-primary">Sign Up</a>
+				<a href={'/login'} class="btn variant-filled-secondary">Sign In</a>
+			</div>
+		</div>
+	{/if}
 </div>
 
 <style lang="postcss">

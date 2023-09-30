@@ -26,11 +26,22 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar>
+		<AppBar background="bg-primary-secondary-tertiary">
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">SIMPLIFY</strong>
+				<a href="/"><strong class="text-xl uppercase">SIMPLIFY</strong></a>
 			</svelte:fragment>
-			<svelte:fragment slot="trail" />
+			<svelte:fragment slot="trail">
+				{#if session}
+					<button
+						class="btn variant-soft-tertiary"
+						on:click={() => {
+							supabase.auth.signOut();
+						}}>Sign Out</button
+					>
+				{:else}
+					<a class="btn variant-soft-tertiary" href="/login"> Sign In </a>
+				{/if}
+			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
 	<!-- Page Route Content -->
