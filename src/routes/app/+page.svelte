@@ -1,15 +1,21 @@
 <script lang="ts">
+	import NoLongerSignedIn from '$lib/components/elements/NoLongerSignedIn.svelte';
+	import { IconPlus } from '@tabler/icons-svelte';
+	export let data;
+
+	let { supabase, session } = data;
+	$: ({ supabase, session } = data);
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="relative flex flex-col items-center justify-center">
-		<div class="img-bg absolute -inset-10" />
-		<h1 class="text-4xl sm:text-5xl md:text-5xl font-bold text-center">Welcome to Simplify!</h1>
-		<div class="flex felx-row space-x-4 mt-8">
-			<a href={'/signup'} class="btn variant-filled-primary">Sign Up</a>
-			<a href={'/login'} class="btn variant-filled-secondary">Sign In</a>
+	{#if session}
+		<div class="relative">
+			<div class="img-bg absolute -inset-10" />
+			<!-- <a href={'/'} class="btn-icon variant-filled-primary"><IconPlus stroke={3} /></a> -->
 		</div>
-	</div>
+	{:else}
+		<NoLongerSignedIn />
+	{/if}
 </div>
 
 <style lang="postcss">

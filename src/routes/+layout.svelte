@@ -32,12 +32,9 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				{#if session}
-					<button
-						class="btn variant-soft-tertiary"
-						on:click={() => {
-							supabase.auth.signOut();
-						}}>Sign Out</button
-					>
+					<form action="/logout" method="POST">
+						<button type="submit" class="btn variant-soft-tertiary">Logout</button>
+					</form>
 				{:else}
 					<a class="btn variant-soft-tertiary" href="/login"> Sign In </a>
 				{/if}
