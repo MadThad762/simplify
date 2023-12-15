@@ -25,7 +25,7 @@ export const handle = async ({ event, resolve }) => {
 
 		// If no session, redirect to root
 		if (!session) {
-			throw redirect(303, '/');
+			redirect(303, '/');
 		}
 	}
 
@@ -35,7 +35,7 @@ export const handle = async ({ event, resolve }) => {
 
 		// If no session, send an error
 		if (!session) {
-			throw error(401, 'Unauthorized');
+			error(401, 'Unauthorized');
 		}
 	}
 

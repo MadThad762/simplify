@@ -8,5 +8,5 @@ export const POST: RequestHandler = async ({ locals }) => {
 		throw fail(500, { message: 'Server error. Try again later.', success: false });
 	}
 
-	throw redirect(303, '/');
+	redirect(303, '/');
 };

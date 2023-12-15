@@ -4,7 +4,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
 	const session = await getSession();
 
 	if (!session) {
-		throw redirect(303, '/');
+		redirect(303, '/');
 	}
 
 	const { data: todos, error } = await supabase
@@ -26,12 +26,12 @@ export const actions = {
 		const formData = await request.formData();
 		const id = formData.get('id') as string;
 
-		const { error } = await supabase.from('todos').delete().eq('id', id);
+		const { error } = await /* @migration task: add path argument */ supabase.from('todos').delete().eq('id', id);
 
 		if (error) {
 			return fail(500, { message: 'Server error. Try again later.', success: false });
 		}
 
-		throw redirect(303, '/');
+		redirect(303, '/');
 	}
 };

@@ -13,7 +13,7 @@ export const actions = {
 		const session = await getSession();
 
 		if (!session) {
-			throw redirect(303, '/');
+			redirect(303, '/');
 		}
 
 		const form = await superValidate(request, newTodoSchema);
@@ -37,6 +37,6 @@ export const actions = {
 			});
 		}
 
-		throw redirect(303, '/');
+		redirect(303, '/');
 	}
 };

@@ -6,7 +6,7 @@ export async function load({ locals: { getSession } }) {
 	const session = await getSession();
 
 	if (session) {
-		throw redirect(303, '/app'); // If user is authenticated, redirect to app
+		redirect(303, '/app'); // If user is authenticated, redirect to app
 	}
 
 	// If not authenticated, continue loading the landing page
