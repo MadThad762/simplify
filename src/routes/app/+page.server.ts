@@ -10,7 +10,8 @@ export const load = async ({ locals: { supabase, getSession } }) => {
 	const { data: todos, error } = await supabase
 		.from('todos')
 		.select(`id, title, description`)
-		.eq('created_by', session.user.id);
+		.eq('created_by', session.user.id)
+		.order('created_at', { ascending: false });
 
 	if (error) {
 		return fail(500, { success: false });
@@ -26,7 +27,10 @@ export const actions = {
 		const formData = await request.formData();
 		const id = formData.get('id') as string;
 
-		const { error } = await /* @migration task: add path argument */ supabase.from('todos').delete().eq('id', id);
+		const { error } = await /* @migration task: add path argument */ supabase
+			.from('todos')
+			.delete()
+			.eq('id', id);
 
 		if (error) {
 			return fail(500, { message: 'Server error. Try again later.', success: false });

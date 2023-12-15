@@ -33,7 +33,7 @@
 					><strong class="text-2xl mb-32">
 						<span
 							class="bg-gradient-to-br from-purple-500 to-green-500 bg-clip-text text-transparent box-decoration-clone"
-							>Simplify</span
+							>Simplify!</span
 						>
 					</strong></a
 				>
