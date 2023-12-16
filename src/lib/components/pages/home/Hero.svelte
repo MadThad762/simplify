@@ -23,7 +23,6 @@
 			</div>
 			<div class="relative flex flex-col items-center justify-center">
 				<div class="img-bg absolute -inset-0" />
-
 				<img
 					src={screenshot}
 					alt="App screenshot"

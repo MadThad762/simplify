@@ -17,13 +17,13 @@
 				>Simplify!</span
 			>
 		</h1>
+		<div class="flex w-full justify-end mb-5 pr-3 max-w-4xl">
+			<a href={'/app/new-todo'} class="btn-icon variant-filled-primary"
+				><Plus class={'h-6 w-6 outline-none focus:outline-none'} strokeWidth="3" /></a
+			>
+		</div>
 		<div class="relative w-full max-w-4xl mx-auto">
 			<div class="glow-bg absolute -inset-5 rounded-xl" />
-			<div class="flex w-full justify-end mb-5 pr-3">
-				<a href={'/app/new-todo'} class="btn-icon variant-filled-primary"
-					><Plus class={'h-6 w-6 outline-none focus:outline-none'} strokeWidth="3" /></a
-				>
-			</div>
 			<TodoTable {todos} />
 		</div>
 	{:else}
