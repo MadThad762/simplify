@@ -1,5 +1,6 @@
 <script lang="ts">
 	import NoLongerSignedIn from '$lib/components/elements/NoLongerSignedIn.svelte';
+	import RadioGroup from '$lib/components/elements/RadioGroup.svelte';
 	import TodoTable from '$lib/components/elements/TodoTable.svelte';
 	// @ts-ignore
 	import Plus from 'svelte-heros-v2/Plus.svelte';
@@ -7,6 +8,8 @@
 
 	let { supabase, session, todos } = data;
 	$: ({ supabase, session, todos } = data);
+
+	let value: number = 0;
 </script>
 
 <div class="container h-full mx-auto flex flex-col items-center">
@@ -17,7 +20,14 @@
 				>Simplify!</span
 			>
 		</h1>
-		<div class="flex w-full justify-end mb-5 pr-3 max-w-4xl">
+		<div class="flex w-full justify-between mb-5 px-3 max-w-4xl">
+			<span class="btn-icon"
+				><Plus
+					class={'h-6 w-6 outline-none focus:outline-none text-transparent'}
+					strokeWidth="3"
+				/></span
+			>
+			<RadioGroup {value} />
 			<a href={'/app/new-todo'} class="btn-icon variant-filled-primary"
 				><Plus class={'h-6 w-6 outline-none focus:outline-none'} strokeWidth="3" /></a
 			>
