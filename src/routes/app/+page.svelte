@@ -9,9 +9,9 @@
 	$: ({ supabase, session, todos } = data);
 </script>
 
-<div class="container h-full mx-auto flex flex-col pt-16 sm:pt-24 lg:pt-32 items-center">
+<div class="container h-full mx-auto flex flex-col items-center">
 	{#if session}
-		<h1 class="text-7xl mb-32">
+		<h1 class="text-7xl mb-32 pt-16 sm:pt-24 lg:pt-32">
 			<span
 				class="bg-gradient-to-br from-purple-500 to-green-500 bg-clip-text text-transparent box-decoration-clone"
 				>Simplify!</span
